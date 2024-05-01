@@ -27,6 +27,9 @@ int main() {
         x = nx;
         y = ny;
         count++;
+        if(count>'Z'){
+            count='A';
+        }
     }
 
     for(int i=0;i<n;i++){
