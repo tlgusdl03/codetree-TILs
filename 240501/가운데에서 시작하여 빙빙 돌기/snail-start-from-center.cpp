@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-int n,x,y,dir=1,count=1;
+int n,x,y,dir=0,count=1;
 int dx[4]={0,1,0,-1};
 int dy[4]={1,0,-1,0};
 int a[100][100];
@@ -10,7 +10,7 @@ bool inRange(int x, int y, int n){
 }
 
 int main() {
-    cin>>n
+    cin>>n;
     x = n/2;
     y = n/2;
     for(int i=0;i < n * n;i++){
@@ -18,7 +18,7 @@ int main() {
         int nx = x + dx[dir];
         int ny = y + dy[dir];
 
-        if(!inRange(nx, ny, n, m) || a[nx][ny] != 0){
+        if(!inRange(nx, ny, n) || a[nx][ny] != 0){
             dir = (dir - 1 + 4) % 4;
             nx = x + dx[dir];
             ny = y + dy[dir];
@@ -30,7 +30,7 @@ int main() {
     }
 
     for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
+        for(int j=0;j<n;j++){
             cout<<a[i][j]<<' ';
         }
         cout<<'\n';
