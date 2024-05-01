@@ -15,9 +15,9 @@ int main() {
     y = n/2;
     for(int i=0;i < n * n;i++){
         a[x][y] = count;
+
         int nx = x + dx[dir];
         int ny = y + dy[dir];
-
         if(!inRange(nx, ny, n) || a[nx][ny] != 0){
             dir = (dir - 1 + 4) % 4;
             nx = x + dx[dir];
