@@ -14,7 +14,7 @@ void choose(int current_index){
     }
     else{
         for(int i=1;i<=K;i++){
-            if(current_index == 0 || !((answer[0] == answer[1]) && (answer[1] == i)))
+            if(current_index == 0 || !((answer[current_index-2] == answer[current_index-1]) && (answer[current_index-1] == i)))
             {
                 answer[current_index]=i;
                 choose(current_index+1);
