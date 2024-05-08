@@ -10,13 +10,12 @@ int dx[2] = {1, 0};
 int dy[2] = {0, 1};
 
 bool canGo(int x, int y){
-    return (0<=x&&x<n&&0<=y&&y<m&&input[x-1][y-1]&&!isVisited[x-1][y-1]);
+    return (0<=x&&x<n&&0<=y&&y<m&&input[x][y]&&!isVisited[x][y]);
 }
 
 void DFS(int x, int y){
     if(x==n-1 && y==m-1){
         answer = true;
-        cout<<answer<<'\n';
         return;
     }
     else{
@@ -42,6 +41,6 @@ int main() {
     }
     isVisited[0][0]=true;
     DFS(0,0);
-    cout<<0<<'\n';
+    cout<<answer<<'\n'
     return 0;
 }
