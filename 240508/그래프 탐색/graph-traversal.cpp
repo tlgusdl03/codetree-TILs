@@ -7,11 +7,11 @@ int N, M, count;
 bool isVisited[1001];
 
 void DFS(int vertex){
+    isVisited[vertex] = true;
     for(int i=0; i<graph[vertex].size(); i++){
         int current_v = graph[vertex][i];
         if(!isVisited[current_v]){
             count++;
-            isVisited[current_v] = true;
             DFS(current_v);
         }
     }
@@ -28,6 +28,6 @@ int main() {
 
     DFS(1);
 
-    cout<<count-1<<'\n';
+    cout<<count<<'\n';
     return 0;
 }
