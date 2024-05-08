@@ -23,10 +23,11 @@ int main() {
     for(int i=0;i<M;i++){
         cin>>x>>y;
         graph[x].push_back(y);
+        graph[y].push_back(x);
     }
 
     DFS(1);
 
-    cout<<count<<'\n';
+    cout<<count-1<<'\n';
     return 0;
 }
