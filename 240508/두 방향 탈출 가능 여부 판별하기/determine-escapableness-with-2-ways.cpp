@@ -41,6 +41,6 @@ int main() {
     }
     isVisited[0][0]=true;
     DFS(0,0);
-    cout<<answer<<'\n'
+    cout<<answer<<'\n';
     return 0;
 }
