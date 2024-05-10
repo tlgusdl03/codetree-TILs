@@ -2,19 +2,30 @@
 using namespace std;
 
 int n;
-int DP[45];
+int memo[46];
+int Fibbo(int n){
+    if(memo[n] != -1){
+        return memo[n];
+    }
+    if(n<=2){
+        return memo[n] = 1;
+    }
+    else{
+        memo[n] = Fibbo(n-1) + Fibbo(n-2);
+        return memo[n];
+    }
+}
 
-void F(int n){
-    DP[0] = 1;
-    DP[1] = 1;
-    for(int i=2; i<n; i++){
-        DP[i] = DP[i-1] + DP[i-2];
+void initArray(int n, int a){
+    for(int i=0;i<=n;i++){
+        memo[i] = a;
     }
 }
 
 int main() {
     cin>>n;
-    F(n);
-    cout<<DP[n-1]<<'\n';
+    initArray(n, -1);
+    int answer = Fibbo(n);
+    cout<<answer<<'\n';
     return 0;
 }
