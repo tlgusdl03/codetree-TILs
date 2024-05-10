@@ -29,6 +29,6 @@ int main() {
     cin>>n;
     init();
     F();
-    cout<<dp[n-1]<<'\n';
+    cout<<*max_element(dp, dp+n)<<'\n';
     return 0;
 }
