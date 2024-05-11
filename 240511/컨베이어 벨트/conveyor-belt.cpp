@@ -6,6 +6,7 @@ int input[MAX_LEN];
 int n, t;
 
 void simulate(){
+    t = t % (2*n);
     int last_index = 2 * n - 1; 
     int temp = input[last_index];
 
@@ -19,7 +20,6 @@ void simulate(){
 
 int main(){
     cin>>n>>t;
-
     for(int i=0; i<2*n; i++){
         cin>>input[i];
     }
