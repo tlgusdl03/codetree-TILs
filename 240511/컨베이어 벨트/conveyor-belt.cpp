@@ -8,9 +8,10 @@ int n, t;
 void simulate(){
     t = t % (2*n);
     int last_index = 2 * n - 1; 
-    int temp = input[last_index];
+    
 
     for(int i=0;i<t;i++){
+        int temp = input[last_index];
         for(int j=2*n-1; j>=1; j--){
             input[j] = input[j-1];
         }
