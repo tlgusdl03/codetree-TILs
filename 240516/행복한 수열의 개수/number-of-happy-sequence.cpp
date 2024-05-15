@@ -23,6 +23,7 @@ int main() {
             else{
                 if(m <= temp){
                     count++;
+                    break;
                 }
                 temp=1;
             }
@@ -42,6 +43,7 @@ int main() {
             else{
                 if(m <= temp){
                     count++;
+                    break;
                 }
                 temp=1;
             }
