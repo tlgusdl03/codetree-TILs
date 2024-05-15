@@ -15,40 +15,34 @@ int main() {
 
     // 행 확인부
     for(int i=0; i<n; i++){
-        int temp=1;
+        int temp=1, max_cnt = 1;
         for(int j=1; j<n; j++){
             if(a[i][j] == a[i][j-1]){
                 temp++;
             }
             else{
-                if(m <= temp){
-                    count++;
-                    break;
-                }
                 temp=1;
             }
+            max_cnt = max(temp, max_cnt);
         }
-        if(m <= temp){
+        if(m <= max_cnt){
             count++;
         }
     }
 
     // 열 확인부
     for(int i=0; i<n; i++){
-        int temp=1;
+        int temp=1, max_cnt = 1;
         for(int j=1; j<n; j++){
             if(a[j][i] == a[j-1][i]){
                 temp++;
             }
             else{
-                if(m <= temp){
-                    count++;
-                    break;
-                }
                 temp=1;
             }
+            max_cnt = max(temp, max_cnt);
         }
-        if(m <= temp){
+        if(m <= max_cnt){
             count++;
         }
     }
