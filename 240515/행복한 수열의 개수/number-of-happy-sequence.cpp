@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 int n, m;
-int count=1;
+int count=0;
 
 int a[100][100];
 int main() {
