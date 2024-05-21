@@ -1,21 +1,31 @@
 #include <iostream>
 using namespace std;
 
-int n, ans;
+int n;
 int backTrackingArr[10];
+long long ans;
 
+void check_beatiful(){
+    int index=0;
+    while(index < n){
+        int temp = backTrackingArr[index];
+        for(int i=0;i<temp;i++){
+            if(index + i >= n || backTrackingArr[index + i] != temp){
+                return;
+            }
+        }
+        index += temp;
+    }
+    ans++;
+}
 void backTracking(int count){
     if(count == n){
-        ans++;
+        check_beatiful();
     }
-    else if (count < n){
+    else {
         for(int i=1; i<=4; i++){
-            int tempIdx = count;
-            for(int j=0; j<i; j++){
-                backTrackingArr[tempIdx] = i;
-                tempIdx++;
-            }
-            backTracking(count + i);
+            backTrackingArr[count]=i;
+            backTracking(count + 1);
         }
     }
 }
