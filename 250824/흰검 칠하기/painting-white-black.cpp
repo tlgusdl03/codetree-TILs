@@ -1,6 +1,6 @@
 #include <iostream>
-#define MAX_R 200001
-#define OFFSET 1000
+#define MAX_R 200050
+#define OFFSET 100025
 #define N 1000
 using namespace std;
 
@@ -45,6 +45,8 @@ int main() {
 
     for(int i = 0; i < n; i++){
         for(int j = x1[i]; j <= x2[i]; j++){
+            if(colors[j] == 'G') continue;
+
             if(directions[i] == 'L'){
                 whiteNums[j]++;
                 colors[j] = 'W';
@@ -53,6 +55,10 @@ int main() {
                 blackNums[j]++;
                 colors[j] = 'B';
             }
+
+            if(whiteNums[j] >= 2 && blackNums[j] >= 2){
+                colors[j] = 'G';
+            }
         }
     }
 
@@ -60,15 +66,9 @@ int main() {
     int blackCount = 0;
     int grayCount = 0;
     for(int i = 0; i < MAX_R; i++){
-        if(whiteNums[i] >= 2 && blackNums[i] >=2){
-            grayCount++;
-        }
-        else if(colors[i] == 'W'){
-            whiteCount++;
-        }
-        else if(colors[i] == 'B'){
-            blackCount++;
-        }
+        if(colors[i] == 'W') whiteCount++;
+        else if(colors[i] == 'B') blackCount++;
+        else if(colors[i] == 'G') grayCount++;
     }
 
     cout << whiteCount << ' ' << blackCount << ' ' << grayCount;
