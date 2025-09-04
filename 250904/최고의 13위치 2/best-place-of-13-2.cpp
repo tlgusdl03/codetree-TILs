@@ -15,7 +15,7 @@ int main() {
         for (int j = 0; j < N; j++){
             for (int k = 0; k < N - 2; k++){
                 for (int l = 0; l < N - 2; l++){
-                    if (i == j && abs(k - l) < 2) continue;
+                    if (i == j && abs(k - l) < 3) continue;
                     int temp = arr[i][k] + arr[i][k + 1] + arr[i][k + 2] + arr[j][l] + arr[j][l + 1] + arr[j][l + 2];
                     result = max(result, temp);
                 }
