@@ -12,7 +12,7 @@ int main() {
     }
 
     int result = 0;
-    for (int i = 0; i < n - k; i++){
+    for (int i = 0; i < n - k + 1; i++){
         int temp = 0;
         for (int j = i; j < i + k; j++){
             temp += arr[j];
@@ -21,6 +21,6 @@ int main() {
     }
 
     cout << result;
-    
+
     return 0;
 }
