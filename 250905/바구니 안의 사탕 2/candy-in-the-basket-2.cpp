@@ -29,13 +29,13 @@ int main() {
     int result = 0;
 
     // cout << "중앙값 c의 위치" << '\n';
-    // cout << "leftest : " << K + 1 << '\n';
-    // cout << "rightest : " << maxRight - K + 1 << '\n';
-    for (int i = K; i <= maxRight - K + 1; i++){
+    // cout << "leftest : " << K << '\n';
+    // cout << "rightest : " << 100 - K + 1 << '\n';
+    for (int i = 0; i <= 101; i++){
         int temp = 0;
         // cout << "(c - K) ~ (c + k)의 범위" << '\n';
         // cout << i - K << " ~ " << i + K << '\n';
-        for (int j = i - K; j <= i + K; j++){
+        for (int j = max((i - K), 0); j <= min((i + K), 101); j++){
             temp += location[j];
         }
 
