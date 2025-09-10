@@ -6,18 +6,7 @@ int N;
 int x1[100], x2[100];
 
 bool getResult (int a1, int a2, int b1, int b2) {
-    int leftA = min(a1, a2);
-    int rightA = max(a1, a2);
-
-    int leftB = min(b1, b2);
-    int rightB = max(b1, b2);
-
-    if (leftA < leftB && rightA > rightB || leftA > leftB && rightA < rightB) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return (a1 < b1 && a2 > b2) || (a1 > b1 && a2 < b2);
 }
 
 int main() {
