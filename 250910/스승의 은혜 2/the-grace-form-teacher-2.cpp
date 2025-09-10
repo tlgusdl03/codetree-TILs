@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <algorithm>
 using namespace std;
 
 int N, B;
@@ -13,6 +13,8 @@ int main() {
     }
 
     int result = 0;
+
+    sort(P, P + N);
 
     for (int i = 0; i < N; i++) {
         int count = 0;
