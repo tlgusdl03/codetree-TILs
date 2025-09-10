@@ -6,6 +6,7 @@ using namespace std;
 int c, n;
 int arr[10][20];
 int results[20][20] = {0,};
+
 int main() {
     cin >> c >> n;
 
@@ -15,7 +16,7 @@ int main() {
     for (int i = 0; i < c; i++) {
         for (int j = 0; j < n - 1; j++) {
             for (int k = j + 1; k < n; k++) {
-                results[arr[i][j]][arr[i][k]]++;
+                results[arr[i][j] - 1][arr[i][k] - 1]++;
             }
         }
     }
