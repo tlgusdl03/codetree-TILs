@@ -5,8 +5,19 @@ using namespace std;
 int N;
 int x1[100], x2[100];
 
-bool getResult (int x1, int x2, int y1, int y2) {
-    return ((x1 < y1 && x2 > y2) || (x1 > y1 && x2 < y2));
+bool getResult (int a1, int a2, int b1, int b2) {
+    int leftA = min(a1, a2);
+    int rightA = max(a1, a2);
+
+    int leftB = min(b1, b2);
+    int rightB = max(b1, b2);
+
+    if (leftA < leftB && rightA > rightB || leftA > leftB && rightA < rightB) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 int main() {
@@ -18,10 +29,15 @@ int main() {
 
     int result = 0;
     for (int i = 0; i < N; i++) {
+        bool isDuplicated = false;
         for (int j = 0; j < N; j++) {
             if (i == j) continue;
-            if(getResult(x1[i], x2[i], x1[j], x2[j])) result++;
+            if(getResult(x1[i], x2[i], x1[j], x2[j])){
+                isDuplicated = true;
+                break;
+            }
         }
+        if (!isDuplicated) result++;
     }
 
     cout << result;
