@@ -44,7 +44,7 @@ int main() {
     for (int i = 0; i < D; i++) {
         int p, m, t;
         cin >> p >> m >> t;
-        eatDatas[p][m] = t;
+        eatDatas[p][m] = max(eatDatas[p][m], t);
     }
 
     for (int i = 0; i < S; i++) {
