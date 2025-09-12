@@ -28,25 +28,19 @@ int main() {
     int result = 0;
 
     for (int i = 0; i < N; i++) {
-        int count = 0;
-        int sum = 0;
+        vector<int> prices;
         for (int j = 0; j < N; j++) {
-            int nextPrice = 0;
-            if (i == j) {
-                nextPrice += arr[j].p / 2 + arr[j].s;
-            }
-            else {
-                nextPrice += arr[j].p + arr[j].s;
-            }
-
-            sum += nextPrice;
-
-            if (sum <= B) {
-                count++;
-            }
-            else {
-                break;
-            }
+            if (j == i)
+                prices.push_back(arr[j].p / 2 + arr[j].s);
+            else
+                prices.push_back(arr[j].p + arr[j].s);
+        }
+        sort(prices.begin(), prices.end());
+        int sum = 0, count = 0;
+        for (int price : prices) {
+            sum += price;
+            if (sum <= B) count++;
+            else break;
         }
         result = max(result, count);
     }
