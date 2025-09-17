@@ -7,7 +7,7 @@ string tempInput[3];
 int inp[3][3];
 
 bool getResult (int a, int b, int c, int m, int n) {
-    return (!(a == b && b == c && a == c) && (a == m || a == n) && (b == m || b == n) && (c == m || c == n));
+    return ((a == m || a == n) && (b == m || b == n) && (c == m || c == n) && !(a == b && b == c && a == c));
 }
 
 int main() {
@@ -24,37 +24,26 @@ int main() {
     for (int i = 1; i <= 8; i++) {
         for (int j = i + 1; j <= 9; j++) {
             bool pass = false;
+
             for (int k = 0; k < 3; k++) {
-                for (int l = 0; l < 3; l++) {
-                    if (pass) continue;
-                    if (k == 0) {
-                        if (getResult(inp[k][l], inp[k + 1][l], inp[k + 2][l], i, j)) {
-                            result++;
-                            pass = true;
-                        }
-                    }
-
-                    else if (l == 0) {
-                        if (getResult(inp[k][l], inp[k][l + 1], inp[k][l + 2], i, j)) {
-                            result++;
-                            pass = true;
-                        }
-                    }
-
-                    else if (k == 1 && l == 1) {
-                        if (getResult(inp[k - 1][l - 1], inp[k][l], inp[k + 1][l + 1], i, j)) {
-                            result++;
-                            pass = true;
-                        }
-
-                        if (getResult(inp[k - 1][l + 1], inp[k][l], inp[k + 1][l - 1], i, j)) {
-                            result++;
-                            pass = true;
-                        }
-                    }
+                if (getResult(inp[k][0], inp[k][1], inp[k][2], i, j)) {
+                    pass = true;
+                    break;
+                }
+                else if (getResult(inp[0][k], inp[1][k], inp[2][k], i, j)) {
+                    pass = true;
+                    break;
                 }
             }
-            
+
+            if (getResult(inp[0][0], inp[1][1], inp[2][2], i, j)) {
+                pass = true;
+            }
+            else if (getResult(inp[0][2], inp[1][1], inp[2][0], i, j)) {
+                pass = true;
+            }
+
+            if (pass) result++;
         }
     }
 
