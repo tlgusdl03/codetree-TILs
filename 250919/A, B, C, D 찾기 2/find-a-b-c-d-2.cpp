@@ -14,13 +14,29 @@ int main() {
     int A = nums[0];
     int ABCD = nums[14];
     
-    for (int i = 1; i <= 12; i++) {
-        for (int j = 2; j <= 13; j++) {
-            for (int k = 3; k <= 14; k++) {
+    for (int i = 1; i < 14; i++) {
+        for (int j = i; j < 14; j++) {
+            for (int k = j; k < 14; k++) {
                 int B = nums[i];
                 int C = nums[j];
                 int D = nums[k];
-                if (A + B + C + D == ABCD) {
+
+                
+                int arr[15] = {
+                    A, B, C, D, A + B, B + C, C + D, D + A, A + C, B + D, A + B + C, A + B + D, A + C + D, B + C + D, A + B + C + D
+                };
+
+                sort (arr, arr + 15);
+
+                bool pass = true;
+                for (int l = 0; l < 15; l++) {
+                    if (nums[l] != arr[l]) {
+                        pass = false;
+                        break;
+                    }
+                }
+
+                if (pass) {
                     cout << A << " " << B << " " << C << " " << D << '\n';
                     return 0;
                 }
