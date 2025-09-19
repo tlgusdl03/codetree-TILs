@@ -20,11 +20,10 @@ int main() {
             int lastIdx = -1;
 
             for (int k = 0; k < N; k++) {
-                if (lastIdx == -1) {
-                    lastIdx = k;
-                }
-                else if (seat[k] == '1' || i == k || j == k) {
-                    tempDistance = min(tempDistance, k - lastIdx);
+                if (seat[k] == '1' || i == k || j == k) {
+                    if (lastIdx != -1) {
+                        tempDistance = min(tempDistance, k - lastIdx);
+                    }
                     lastIdx = k;
                 }
             }
