@@ -16,10 +16,8 @@ int main() {
         MAX = max(MAX, arr[i]);
     }
 
-    sort(arr, arr + N);
-
     int result = 0;
-    for (int i = MIN; i <= MAX - K; i++) {
+    for (int i = MIN; i <= MAX; i++) {
         int temp = 0;
         for (int j = 0; j < N; j++) {
             if (i <= arr[j] && arr[j] <= i + K) temp++;
