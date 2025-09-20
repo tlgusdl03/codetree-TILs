@@ -15,7 +15,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
 
         bool pass = true;
-        bool appeared[1000] = {false, };
+        bool appeared[1001] = {false, };
         int answer[1000] = {};
         
         answer[0] = i;
