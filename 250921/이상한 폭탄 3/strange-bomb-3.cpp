@@ -21,11 +21,16 @@ int main() {
         int tempSum = 0;
         for (int j = 0; j < N; j++) {
             if (num[j] == i) {
-                for (int k = j - K; k <= j + K; k++) {
-                    if (num[k] == i) tempSum++;
+                if (lastIdx != -1) {
+                    if (j - lastIdx <= K) {
+                        tempSum++;
+                    }
                 }
+                lastIdx = j;
             }
         }
+        if (tempSum != 0) tempSum++;
+        
         if (result < tempSum) {
             result = tempSum;
             resultIdx = i;
