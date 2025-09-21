@@ -15,23 +15,24 @@ int main() {
     sort(num, num + N);
 
     int result = 0;
+    int resultIdx = 0;
     for (int i = 0; i <= 1000000; i++) {
         int lastIdx = -1;
-        int temp = 0;
+        int tempSum = 0;
         for (int j = 0; j < N; j++) {
             if (num[j] == i) {
-                if (lastIdx != -1) {
-                    if (j - lastIdx <= K) {
-                        temp++;
-                    }
+                for (int k = j - K; k <= j + K; k++) {
+                    if (num[k] == i) tempSum++;
                 }
-                lastIdx = j;
             }
         }
-        result = max(result, temp);
+        if (result < tempSum) {
+            result = tempSum;
+            resultIdx = i;
+        }
     }
 
-    cout << result;
+    cout << resultIdx;
 
     return 0;
 }
