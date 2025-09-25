@@ -22,7 +22,13 @@ int main() {
         }
     }
 
-    cout << longest / 2 + 1;
+    if (longest % 2 == 0) {
+        cout << longest / 2;
+    }
+    else {
+        cout << longest / 2 + 1;
+    }
+    
 
     return 0;
 }
