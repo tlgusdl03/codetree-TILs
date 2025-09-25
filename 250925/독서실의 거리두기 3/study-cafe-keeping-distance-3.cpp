@@ -10,6 +10,8 @@ int main() {
     cin >> N;
     cin >> seats;
 
+    int longestStartIdx = 0;
+    int longestEndIdx = 0;
     int longest = 0;
     int temp = 0;
     for (int i = 0; i < N; i++) {
@@ -17,18 +19,29 @@ int main() {
             temp++;
         }
         else if (seats[i] == '1') {
-            longest = max(longest, temp);
+            if (temp > longest) {
+                longest = temp;
+                longestStartIdx = i - longest;
+                longestEndIdx = i - 1;
+            }
             temp = 0;
         }
     }
 
-    if (longest % 2 == 0) {
-        cout << longest / 2;
-    }
-    else {
-        cout << longest / 2 + 1;
+    seats[(longestStartIdx + longestEndIdx) / 2] = '1';
+
+    int result = N + 1;
+    int lastIdx = -1;
+    for (int i = 0; i < N; i++) {
+        if (seats[i] == '1') {
+            if (lastIdx != -1) {
+                result = min(result, i - lastIdx);
+            }
+            lastIdx = i;
+        }
     }
     
+    cout << result;
 
     return 0;
 }
