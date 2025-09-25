@@ -15,7 +15,7 @@ int main() {
     if (betA == 1 && betB == 1) {
         result = 0;
     }
-    else if (max(betA, betB) <= 2) {
+    else if (betA == 2 || betB == 2) {
         result = 1;
     }
     else {
@@ -23,6 +23,6 @@ int main() {
     }
 
     cout << result;
-    
+
     return 0;
 }
