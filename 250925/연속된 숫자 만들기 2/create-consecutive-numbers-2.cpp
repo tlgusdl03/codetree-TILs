@@ -1,11 +1,13 @@
 #include <iostream>
-
+#include <algorithm>
 using namespace std;
 
 int pos[3];
 
 int main() {
     for (int i = 0; i < 3; i++) cin >> pos[i];
+
+    sort(pos, pos + 3);
 
     int result = 0;
 
