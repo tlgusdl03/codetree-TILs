@@ -35,10 +35,20 @@ int main() {
     int result = 0;
 
     if (L_pos[0] == R_pos[0] && L_pos[0] == B_pos[0] && R_pos[0] == B_pos[0]) {
-        result = abs(B_pos[1] - L_pos[1]) + 1;
+        if (L_pos[1] < R_pos[1] && R_pos[1] < B_pos[1] || L_pos[1] > R_pos[1] && R_pos[1] > B_pos[1]) {
+            result = abs(B_pos[1] - L_pos[1]) + 1;
+        }
+        else {
+            result = abs(B_pos[1] - L_pos[1]) - 1;
+        }
     }
     else if (L_pos[1] == R_pos[1] && L_pos[1] == B_pos[1] && R_pos[1] == B_pos[1]) {
-        result = abs(B_pos[0] - L_pos[0]) + 1;
+        if (L_pos[0] < R_pos[0] && R_pos[0] < B_pos[0] || L_pos[0] > R_pos[0] && R_pos[0] > B_pos[0]) {
+            result = abs(B_pos[0] - L_pos[0]) + 1;
+        }
+        else {
+            result = abs(B_pos[0] - L_pos[0]) - 1;
+        }
     }
     else {
         result = abs(B_pos[0] - L_pos[0]) + abs(B_pos[1] - L_pos[1]) - 1;
