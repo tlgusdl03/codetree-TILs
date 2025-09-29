@@ -12,11 +12,13 @@ int main() {
 
     int result = 0;
 
+    int count = 0;
     for (int i = 0; i < n; i++) {
-        if (arr[i] == 1) {
-            if (m != 0) {
-                i += m + 1;
-            }
+        if (count > 0) {
+            count--;
+        }
+        else if (arr[i] == 1) {
+            count = 2 * m;
             result++;
         }
     }
