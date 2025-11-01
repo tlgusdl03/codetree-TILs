@@ -28,7 +28,7 @@ int findSum(int x, int y) {
             int nx = x + shapes[i][j].first;
             int ny = y + shapes[i][j].second;
 
-            if (!isInRange(x, y, n, m)) continue;
+            if (!isInRange(nx, ny, n, m)) continue;
 
             temp += grid[nx][ny];
         }
