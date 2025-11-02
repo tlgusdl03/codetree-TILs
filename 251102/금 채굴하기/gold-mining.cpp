@@ -11,8 +11,8 @@ int findSum(int x, int y, int n, int m) {
 
     for (int k = 0; k <= n; k++) {
         int temp = 0;
-        for (int i = 0; i <= n; i++) {
-            for (int j = 0; j <= n; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 if (abs(x - i) + abs(y - j) <= k) temp += grid[i][j];
             }
         }
