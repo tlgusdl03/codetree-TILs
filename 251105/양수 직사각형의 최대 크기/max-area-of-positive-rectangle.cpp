@@ -10,10 +10,12 @@ int findSum(int x1, int y1, int x2, int y2) {
 
     for (int i = x1; i <= x2; i++) {
         for (int j = y1; j <= y2; j++) {
-            if (grid[i][j] < 0) {
+            if (grid[i][j] > 0) {
+                result++;
+            }
+            else {
                 return -1;
             }
-            result++;
         }
     }
 
