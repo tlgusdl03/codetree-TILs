@@ -17,15 +17,15 @@ int main() {
     for (int i = 0; i < n; i++) cin >> d[i];
 
     for (int i = 0; i < t; i++) {
-        int temp1 = d[2];
+        int temp1 = d[n - 1];
 
-        int temp2 = l[2];
+        int temp2 = l[n - 1];
         for (int j = n - 1; j > 0 ; j--) {
             l[j] = l[j - 1];
         }
         l[0] = temp1;
 
-        int temp3 = r[2];
+        int temp3 = r[n - 1];
         for (int j = n - 1; j > 0 ; j--) {
             r[j] = r[j - 1];
         }
