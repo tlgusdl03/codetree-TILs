@@ -44,8 +44,9 @@ string rotate(string A) {
 }
 
 int findMinLen(string A) {
-    int result = 11;
+    int result = 20;
     int len = A.length();
+
 
     for (int i = 0; i < len; i++) {
         
@@ -53,7 +54,9 @@ int findMinLen(string A) {
 
         A = rotated_A;
 
-        result = min(result, findLen(rotated_A));
+        int tempLen = findLen(rotated_A);
+
+        result = min(result, tempLen);
     }
 
     return result;
