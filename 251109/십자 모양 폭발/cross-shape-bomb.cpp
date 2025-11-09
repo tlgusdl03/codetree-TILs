@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <deque>
 using namespace std;
 
 int n;
@@ -75,11 +75,19 @@ int main() {
     }
 
     for (int j = 0; j < n; j++) {
-        for (int i = n - 1; i > 0; i--) {
-            if (grid[i][j] == 0) {
-                grid[i][j] = grid[i - 1][j];
-                grid[i - 1][j] = 0;
-            };   
+        deque<int> temp;
+        for (int i = n - 1; i >= 0; i--) {
+            if (grid[i][j] != 0) temp.push_back(grid[i][j]);
+        }
+
+        for (int i = n - 1; i >= 0; i--) {
+            if (temp.empty()) {
+                grid[i][j] = 0;
+            }
+            else {
+                grid[i][j] = temp.front();
+                temp.pop_front();
+            }
         }
     }
 
