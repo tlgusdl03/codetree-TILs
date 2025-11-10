@@ -21,8 +21,8 @@ int main() {
     while (true) {
         bool pass = true;
         int firstIdx = 0;
-        int count = 1;
-        for (int i = 1; i < n; i++) {
+        int count = 0;
+        for (int i = 0; i < n; i++) {
             if (numbers[firstIdx] == numbers[i] && numbers[i] != 0) {
                 count++;
             }
