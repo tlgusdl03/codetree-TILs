@@ -8,15 +8,15 @@ char dir;
 void aggregate(char dir) {
     if (dir == 'L') {
         for (int i = 0; i < 4; i++) {
-            int last = grid[i][0];
+            int lastIdx = 0;
             for (int j = 1; j < 4; j++) {
-                if (last == grid[i][j]) {
-                    grid[i][j - 1] *= 2;
+                if (grid[i][lastIdx] == grid[i][j]) {
+                    grid[i][lastIdx] *= 2;
                     grid[i][j] = 0;
-                    last = 0;
+                    lastIdx = j;
                 }
-                else if (last != grid[i][j] && grid[i][j] != 0) {
-                    last = grid[i][j];
+                else if (grid[i][lastIdx] != grid[i][j] && grid[i][j] != 0) {
+                    lastIdx = j;
                 }
             } 
         }
@@ -24,15 +24,15 @@ void aggregate(char dir) {
 
     else if (dir == 'R') {
         for (int i = 0; i < 4; i++) {
-            int last = grid[i][3];
+            int lastIdx = 3;
             for (int j = 2; j >= 0; j--) {
-                if (last == grid[i][j]) {
-                    grid[i][j + 1] *= 2;
+                if (grid[i][lastIdx] == grid[i][j]) {
+                    grid[i][lastIdx] *= 2;
                     grid[i][j] = 0;
-                    last = 0;
+                    lastIdx = j;
                 }
-                else if (last != grid[i][j] && grid[i][j] != 0) {
-                    last = grid[i][j];
+                else if (grid[i][lastIdx] != grid[i][j] && grid[i][j] != 0) {
+                    lastIdx = j;
                 }
             } 
         }
@@ -40,15 +40,15 @@ void aggregate(char dir) {
 
     else if (dir == 'U') {
         for (int j = 0; j < 4; j++) {
-            int last = grid[0][j];
+            int lastIdx = 0;
             for (int i = 1; i < 4; i++) {
-                if (last == grid[i][j]) {
-                    grid[i - 1][j] *= 2;
+                if (grid[lastIdx][j] == grid[i][j]) {
+                    grid[lastIdx][j] *= 2;
                     grid[i][j] = 0;
-                    last = 0;
+                    lastIdx = i;
                 }
-                else if (last != grid[i][j] && grid[i][j] != 0) {
-                    last = grid[i][j];
+                else if (grid[lastIdx][j] != grid[i][j] && grid[i][j] != 0) {
+                    lastIdx = i;
                 }
             }
         }
@@ -56,15 +56,15 @@ void aggregate(char dir) {
 
     else if (dir == 'D') {
         for (int j = 0; j < 4; j++) {
-            int last = grid[3][j];
+            int lastIdx = 3;
             for (int i = 2; i >= 0; i--) {
-                if (last == grid[i][j]) {
-                    grid[i + 1][j] *= 2;
+                if (grid[lastIdx][j] == grid[i][j]) {
+                    grid[lastIdx][j] *= 2;
                     grid[i][j] = 0;
-                    last = 0;
+                    lastIdx = i;
                 }
-                else if (last != grid[i][j] && grid[i][j] != 0) {
-                    last = grid[i][j];
+                else if (grid[lastIdx][j] != grid[i][j] && grid[i][j] != 0) {
+                    lastIdx = i;
                 }
             }
         }
