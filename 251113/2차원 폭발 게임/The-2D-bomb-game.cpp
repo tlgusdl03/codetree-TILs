@@ -83,8 +83,9 @@ void solve() {
     for (int i = 0; i < K; i++) {
         bomb();
         rotate();
-        bomb();
     }
+
+    bomb();
 }
 
 int main() {
