@@ -6,12 +6,14 @@ int N, M, K;
 int numbers_2d[100][100];
 
 void erase(int startIdx, int endIdx, int j) {
+    // 연속된 폭탄을 지우는 함수
     for (int i = startIdx; i <= endIdx; i++) {
         numbers_2d[i][j] = 0;
     }
 }
 
 void fall(){
+    // 중력에 따라 빈곳을 채우도록 하는 함수
     for (int j = 0; j < N; j++) {
         int idx = N - 1;
         int temp[100] = {0, };
@@ -29,6 +31,7 @@ void fall(){
 }
 
 void bomb() {
+    // M 이상의 연속된 숫자를 지우고 중력에 따라 빈곳을 매우는 함수
     while (true) {
         bool pass = true;
 
@@ -62,6 +65,7 @@ void bomb() {
 }
 
 void rotate() {
+    // 시계방향으로 90도 배열을 회전 시키는 함수
     int temp[100][100] = {0, };
 
     for (int i = 0; i < N; i++) {
