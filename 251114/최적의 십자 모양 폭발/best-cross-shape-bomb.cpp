@@ -6,6 +6,7 @@ int n;
 int grid[50][50];
 int backup[50][50];
 
+// 십자 모양으로 폭탄을 터트리고 중력에 따라 남은 폭탄을 떨어지게 하는 함수
 void bomdAndFall(int row, int col) {
     int len = grid[row][col];
 
@@ -58,6 +59,7 @@ void bomdAndFall(int row, int col) {
     }
 }
 
+// 쌍의 개수를 세는 함수, 현재 위치를 기준으로 아래와 오른쪽의 수를 확인한다, 그 과정에서 같은 방향 2칸 너머의 수와 반대 방향의 수도 같이 살핀다.
 int countPair() {
     int result = 0;
 
@@ -102,6 +104,7 @@ int countPair() {
     return result;
 }
 
+// 각 위치에서 계산이 끝난 후 원래대로 배열을 복구하기 위한 함수
 void restore() {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -110,6 +113,7 @@ void restore() {
     }
 }
 
+// 디버깅용 출력 함수
 void debug() {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
