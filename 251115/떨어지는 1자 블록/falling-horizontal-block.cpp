@@ -11,8 +11,10 @@ void solve() {
     while (true) {
         bool stop = false;
 
+        // row : 0 ~ n - 1
+        // row + 1 : 1 ~ n
         for (int i = k - 1; i < k + m - 1; i++) {
-            if (row + 1 >= n - 1 || grid[row + 1][i] == 1) {
+            if (row + 1 >= n || grid[row + 1][i] == 1) {
                 stop = true;
                 break;
             }
