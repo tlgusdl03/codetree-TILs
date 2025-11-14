@@ -68,11 +68,33 @@ int countPair() {
             if (cur == 0) continue;
 
             if (i + 1 < n && cur == grid[i + 1][j]) {
-                if (i + 2 >= n || cur != grid[i + 2][j]) result++;
+                if (i - 1 < 0 && i + 2 >= n) {
+                    result++;
+                }
+                else if (i - 1 < 0 || cur != grid[i - 1][j]) {
+                    result++;
+                }
+                else if (i + 2 >= n || cur != grid[i + 2][j]) {
+                    result++;
+                }
+                else if (cur != grid[i - 1][j] && cur != grid[i + 1][j]) {
+                    result++;
+                }
             }
 
             if (j + 1 < n && cur == grid[i][j + 1]) {
-                if (j + 2 >= n || cur != grid[i][j + 2]) result++;
+                if (j - 1 < 0 && j + 2 >= n ) {
+                    result++;
+                }
+                else if (j - 1 < 0 || cur != grid[i][j - 1]) {
+                    result++;
+                }
+                else if (j + 2 >= n || cur != grid[i][j + 2]) {
+                    result++;
+                }
+                else if (cur != grid[i][j - 1] && cur != grid[i][j + 2]) {
+                    result++;
+                }
             }
         }
     }
@@ -86,6 +108,17 @@ void restore() {
             grid[i][j] = backup[i][j];
         }
     }
+}
+
+void debug() {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << grid[i][j] << " ";
+        }
+        cout << '\n';
+    }
+    cout << countPair() << '\n';
+    cout << '\n';
 }
 
 int main() {
@@ -103,6 +136,7 @@ int main() {
         for (int j = 0; j < n; j++) {
             bomdAndFall(i, j);
             result = max(result, countPair());
+            // debug();
             restore();
         }
     }
