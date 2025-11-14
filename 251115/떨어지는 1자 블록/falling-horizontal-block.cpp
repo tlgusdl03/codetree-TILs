@@ -12,7 +12,7 @@ void solve() {
         bool stop = false;
 
         for (int i = k - 1; i < k + m - 1; i++) {
-            if (row + 1 == n - 1 || grid[row + 1][i] == 1) {
+            if (row + 1 >= n - 1 || grid[row + 1][i] == 1) {
                 stop = true;
                 break;
             }
