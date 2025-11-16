@@ -71,6 +71,7 @@ bool isThereWallIsOnYourRightSide(int x, int y, int dir) {
 
 int solve(int x, int y) {
     int count = 0;
+    int blockedCount = 0;
     int dir = 1;
     int cur_X = x;
     int cur_Y = y;
@@ -107,11 +108,13 @@ int solve(int x, int y) {
             cur_X = next_X;
             cur_Y = next_Y;
             count++;
-
+            blockedCount = 0;
             if (cur_X == x && cur_Y == y) return -1;
         }
         else {
             dir = (dir - 1 + 4) % 4;
+            blockedCount++;
+            if (blockedCount == 4) return -1;
         }
     }
 
