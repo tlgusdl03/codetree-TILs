@@ -43,13 +43,15 @@ int move() {
 
             count++;
 
-            if (!isInRange(cur_X, cur_Y) || location[cur_X][cur_Y] == 2) return count;
+            if (!isInRange(cur_X, cur_Y)) return count;
 
             if (location[cur_X][cur_Y] != 1) {
                 pair<int, int> tail = snake.back();
                 location[tail.first][tail.second] = 0;
                 snake.pop_back();
             }
+            
+            if (location[cur_X][cur_Y] == 2) return count;
             
             location[cur_X][cur_Y] = 2;
             snake.push_front({cur_X, cur_Y});
