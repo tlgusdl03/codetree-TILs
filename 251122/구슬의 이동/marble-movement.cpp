@@ -111,6 +111,7 @@ int solve() {
 					int count = temp[row][col].size();
 					for (int i = k; i < count; i++) {
 						int num = temp[row][col].back();
+						temp[row][col].pop_back();
 						marbles[num].able = false;
 					}
 				}
