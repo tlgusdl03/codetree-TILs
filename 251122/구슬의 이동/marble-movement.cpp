@@ -18,6 +18,7 @@ public:
 		this->col = col;
 		this->direction = direction;
 		this->speed = speed;
+		this->able = true;
 	}
 
 	void changeDirection() {
@@ -119,7 +120,7 @@ int main() {
 	char d;
 	for (int i = 0; i < m; i++) {
 		cin >> r >> c >> d >> v;
-		marbles.push_back({ i, r, c, d, v });
+		marbles.push_back({i, r, c, d, v});
 	}
 
 	cout << solve();
