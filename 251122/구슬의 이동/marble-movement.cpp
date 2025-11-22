@@ -70,7 +70,21 @@ int solve() {
 
 				if (!isInRange(next_Row, next_Col)) {
 					marbles[num].changeDirection();
-					move -= 2;
+					
+					if (marbles[num].direction == 'U') {
+					next_Row--;
+					}
+					else if (marbles[num].direction == 'D') {
+						next_Row++;
+					}
+					else if (marbles[num].direction == 'L') {
+						next_Col--;
+					}
+					else if (marbles[num].direction == 'R') {
+						next_Col++;
+					}
+
+					move--;
 				}
 			}
 
