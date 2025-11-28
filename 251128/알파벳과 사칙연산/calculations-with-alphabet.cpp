@@ -1,11 +1,11 @@
 #include <iostream>
-
+#include <climits>
 using namespace std;
 
 string expression;
 
 int input_Arr[200] = {0, };
-int result = 0;
+int result = INT_MIN;
 
 void solve(int idx) {
     if (idx == expression.length()) {
@@ -33,12 +33,16 @@ void solve(int idx) {
         result = max(result, a);
     }
     else {
-        for (int i = 1; i <= 4; i++) {
-            if ('a' <= expression[idx] && expression[idx] <= 'f') {
+        if ('a' <= expression[idx] && expression[idx] <= 'f') {
+            for (int i = 1; i <= 4; i++) {
                 input_Arr[idx] = i;
+                solve(idx + 1);
             }
-            solve(idx + 1);
+            input_Arr[idx] = 0;
         }
+        else {
+            solve(idx + 1);
+        }    
     }
 }
 
