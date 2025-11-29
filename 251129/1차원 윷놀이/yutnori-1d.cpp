@@ -23,7 +23,7 @@ void solve(int idx) {
     }
     else {
         for (int i = 0; i < k; i++) {
-            if (location[i] < m) {
+            if (location[i] < m - 1) {
                 location[i] += nums[idx];
 
                 solve(idx + 1);
