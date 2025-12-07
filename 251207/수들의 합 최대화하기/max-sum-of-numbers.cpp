@@ -29,8 +29,9 @@ void solve(int cnt) {
     }
 
     for (int i = 0; i < n; i++) {
+        if (visited_Row[i]) continue;
         for (int j = 0; j < n; j++) {
-            if (visited_Row[i] || visited_Col[j]) continue;
+            if (visited_Col[j]) continue;
 
             selected.push_back({i, j});
             visited_Row[i] = true;
