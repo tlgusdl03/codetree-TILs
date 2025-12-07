@@ -5,7 +5,6 @@ using namespace std;
 
 int n;
 int grid[10][10];
-bool visited_Row[10];
 bool visited_Col[10];
 vector<pair<int, int>> selected;
 int result = 0;
@@ -22,26 +21,21 @@ int getResult() {
     return sum;
 }
 
-void solve(int cnt) {
+void solve(int row, int cnt) {
     if (cnt == n) {
         result = max(result, getResult());
         return;
     }
 
-    for (int i = 0; i < n; i++) {
-        if (visited_Row[i]) continue;
-        for (int j = 0; j < n; j++) {
-            if (visited_Col[j]) continue;
+    for (int j = 0; j < n; j++) {
+        if (visited_Col[j]) continue;
 
-            selected.push_back({i, j});
-            visited_Row[i] = true;
-            visited_Col[j] = true;
-            solve(cnt + 1);
+        selected.push_back({row, j});
+        visited_Col[j] = true;
+        solve(row + 1, cnt + 1);
 
-            selected.pop_back();
-            visited_Row[i] = false;
-            visited_Col[j] = false;
-        }
+        selected.pop_back();
+        visited_Col[j] = false;
     }
 
 }
@@ -55,7 +49,7 @@ int main() {
         }
     }
 
-    solve(0);
+    solve(0, 0);
 
     cout << result << '\n';
 
