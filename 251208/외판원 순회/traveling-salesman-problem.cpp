@@ -10,18 +10,23 @@ bool visited[10];
 vector<int> cost;
 int answer = INT_MAX;
 
-void findAnswer(int prev_Row) {
-    int result = 0;
+bool canGo(int i, int j) {
+    return (!visited[j] && !A[i][j]);
+}
 
-    cost.push_back(A[prev_Row][0]);
+void findAnswer(int prev_Row) {
+
+    if (A[prev_Row][0] == 0) return;
+
+    int result = 0;
 
     for (int i = 0; i < cost.size(); i++) {
         result += cost[i];
     }
 
-    answer = min(answer, result);
+    result += A[prev_Row][0];
 
-    cost.pop_back();
+    answer = min(answer, result);
 }
 
 void solve(int prev_Row, int cnt) {
@@ -32,6 +37,7 @@ void solve(int prev_Row, int cnt) {
 
     for (int i = 0; i < n; i++) {
         if (visited[i]) continue;
+        if (A[prev_Row][i] == 0) continue;
 
         visited[i] = true;
         cost.push_back(A[prev_Row][i]);
@@ -52,7 +58,6 @@ int main() {
     }
 
     visited[0] = true;
-    cost.push_back(A[0][0]);
     solve(0, 1); 
     
     cout << answer << '\n';
