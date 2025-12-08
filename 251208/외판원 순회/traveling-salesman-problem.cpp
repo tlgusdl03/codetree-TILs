@@ -11,7 +11,7 @@ vector<int> cost;
 int answer = INT_MAX;
 
 bool canGo(int i, int j) {
-    return (!visited[j] && !A[i][j]);
+    return (!visited[j] && A[i][j] != 0);
 }
 
 void findAnswer(int prev_Row) {
@@ -36,8 +36,7 @@ void solve(int prev_Row, int cnt) {
     }
 
     for (int i = 0; i < n; i++) {
-        if (visited[i]) continue;
-        if (A[prev_Row][i] == 0) continue;
+        if(!canGo(prev_Row, i)) continue;
 
         visited[i] = true;
         cost.push_back(A[prev_Row][i]);
