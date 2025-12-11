@@ -7,7 +7,7 @@ int grid[50][50];
 int dx[4] = {0, 1, 0, -1};
 int dy[4] = {1, 0, -1, 0};
 bool visited[50][50];
-int MAX_K = 100;
+int MAX_K = 1;
 int MAX_Count = 0;
 int count = 0;
 
@@ -38,7 +38,7 @@ void DFS(int row, int col, int k) {
 }
 
 void solve() {
-    for (int k = 100; k >= 1; k--) {
+    for (int k = 1; k <= 100; k++) {
         memset(visited, false, sizeof(visited));
         count = 0;  
         for (int i = 0; i < N; i++) {
