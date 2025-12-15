@@ -3,6 +3,7 @@
 #include <cstring>
 #include <vector>
 #include <queue>
+#define STONE_NUM 8
 using namespace std;
 
 int n, k, m;
@@ -21,20 +22,11 @@ bool isInRange(int row, int col) {
 }
 
 void make_Copy_Grid() {
-    memset(copy_Grid, 0, sizeof(copy_Grid));
-
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            copy_Grid[i][j] = grid[i][j];
-        }
-    }
-
-    for (int i = 0; i < m; i++) {
+    memcpy(copy_Grid, grid, sizeof(grid));  
+    
+    for (int i = 0; i < STONE_NUM; i++) { 
         if (flag[i]) {
-            int clear_Row = stones[i].first;
-            int clear_Col = stones[i].second;
-
-            copy_Grid[clear_Row][clear_Col] = 0;
+            copy_Grid[stones[i].first][stones[i].second] = 0;
         }
     }
 }
@@ -59,8 +51,7 @@ void BFS(int row, int col) {
                 q.push({next_Row, next_Col});
             }
         }
-    }
-    
+    }   
 }
 
 void solve() {
@@ -71,7 +62,7 @@ void solve() {
         int row = r[i];
         int col = c[i];
 
-        if (!visited[row][col]) BFS(row, col);
+        if (!visited[row][col] && copy_Grid[row][col] == 0) BFS(row, col);
     }
 
     int temp = 0;
@@ -90,8 +81,7 @@ void make_choice(int idx, int cnt) {
         solve();
         return;
     }
-
-    if (idx >= m) return;
+    if (idx >= stones.size()) return;
 
     flag[idx] = true;
     make_choice(idx + 1, cnt + 1);
