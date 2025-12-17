@@ -23,7 +23,7 @@ void push(int row, int col, int dis) {
 }
 
 void BFS(int row, int col) {
-    push(row, col, step[row][col]);
+    push(row, col, 0);
 
     while(!q.empty()) {
         int cur_R = q.front().first;
@@ -52,10 +52,17 @@ int main() {
     c1--;
     r2--;
     c2--;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            step[i][j] = -1;
+            visited[i][j] = false;
+        }
+    }
     
     BFS(r1, c1);
 
-    if (step[r2][c2] == 0) {
+    if (step[r2][c2] == -1) {
         cout << -1 << '\n';
     }
     else {
