@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <queue>
 #include <cstring>
 using namespace std;
@@ -9,6 +10,7 @@ int dx[4] = {0, 1, 0, -1};
 int dy[4] = {1, 0, -1, 0};
 bool visited[100][100];
 int answer[100][100];
+vector<pair<int, int>> people;
 
 struct Node {
     int row, col, step;
@@ -29,7 +31,9 @@ int BFS(int row, int col) {
         int cur_S = q.front().step;
         q.pop();
 
-        if (grid[cur_R][cur_C] == 3) return cur_S;
+        if (grid[cur_R][cur_C] == 3) {
+            return cur_S;
+        }
 
         for (int i = 0; i < 4; i++) {
             int next_R = cur_R + dx[i];
@@ -46,17 +50,21 @@ int BFS(int row, int col) {
 }
 
 void solve() {
+
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            if (grid[i][j] == 2) {
-                memset(visited, false, sizeof(visited));
-                int result = BFS(i, j);
-                answer[i][j] = result;
-            }
-            else {
+            if (grid[i][j] != 2) {
                 answer[i][j] = 0;
             }
         }
+    }
+
+    for (int i = 0; i < people.size(); i++) {
+        memset(visited, false, sizeof(visited));
+        int r = people[i].first;
+        int c = people[i].second;
+        int result = BFS(r, c);
+        answer[r][c] = result;
     }
 
     for (int i = 0; i < n; i++) {
@@ -73,6 +81,9 @@ int main() {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             cin >> grid[i][j];
+            if (grid[i][j] == 2) {
+                people.push_back({i, j});
+            }
         }
     }
 
