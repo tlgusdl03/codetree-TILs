@@ -14,7 +14,7 @@ int main() {
     tb[3] = 1;
 
     for (int i = 4; i < 1000; i++) {
-        tb[i] = (tb[i - 2] + tb[i - 3]) & 10007;
+        tb[i] = (tb[i - 2] + tb[i - 3]) % 10007;
     }
 
     cout << tb[n] << '\n';
