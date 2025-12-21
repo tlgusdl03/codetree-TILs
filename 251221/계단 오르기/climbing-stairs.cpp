@@ -8,7 +8,7 @@ int n;
 int main() {
     cin >> n;
 
-    tb[0] = 0;
+    tb[0] = 1;
     tb[1] = 0;
     tb[2] = 1;
     tb[3] = 1;
