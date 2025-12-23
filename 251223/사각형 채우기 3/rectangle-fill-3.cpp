@@ -13,7 +13,11 @@ int main() {
     tb[2] = 7;
 
     for (int i = 3; i < MAX_N + 1; i++) {
-        tb[i] = (tb[i - 3] * 2 + tb[i - 2] * 3 + tb[i - 1] * 2) % MOD;
+        int temp = 0;
+        for (int j = 0; j <= i - 3; j++) {
+            temp += tb[j] * 2 % MOD;
+        }
+        tb[i] = (temp + tb[i - 2]* 3 % MOD + tb[i - 1] * 2 % MOD) % MOD;
     }
 
     cout << tb[n];
