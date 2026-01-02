@@ -20,14 +20,10 @@ void solve() {
     init();
 
     for (int i = 1; i <= M; i++) {
-        for (int j = 0; j < i; j++) {
-            if (dp[j] == INT_MIN) continue;
+        for (int k = 0; k < N; k++) {
+            if (i < coin[k] || dp[i - coin[k]] == INT_MIN) continue;
 
-            for (int k = 0; k < N; k++) {
-                if (j + coin[k] == i) {
-                    dp[i] = max(dp[i], dp[j] + 1);
-                }
-            }
+            dp[i] = max(dp[i], dp[i - coin[k]] + 1);
         }
     }
 
