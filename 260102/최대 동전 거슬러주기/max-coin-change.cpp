@@ -1,15 +1,16 @@
 #include <iostream>
 #include <algorithm>
 #include <climits>
+#define M_MAX 10000
 using namespace std;
 
 int N, M;
 int coin[100];
-int dp[101];
+int dp[M_MAX + 1];
 int ans = -1;
 
 void init() {
-    for (int i = 0; i <= 100; i++) {
+    for (int i = 0; i <= M_MAX; i++) {
         dp[i] = INT_MIN;
     }
     dp[0] = 0;
@@ -42,6 +43,6 @@ int main() {
     solve();
 
     cout << ans << '\n';
-    
+
     return 0;
 }
