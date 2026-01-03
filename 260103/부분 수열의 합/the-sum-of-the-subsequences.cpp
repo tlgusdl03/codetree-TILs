@@ -25,7 +25,7 @@ void solve() {
 
     for (int i = 1; i <= m; i++) {
         for (int j = 1; j <= n; j++) {
-            if (i >= A[j] && (dp[j - 1][i - A[j]] || dp[j - 1][i])) dp[j][i] = true;
+            if ((i >= A[j] && dp[j - 1][i - A[j]]) || dp[j - 1][i]) dp[j][i] = true;
         }
     }
 }
