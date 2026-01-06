@@ -6,6 +6,7 @@ public class Main {
     public static int[] nums = new int[MAX_N];
     public static int[] dp = new int[MAX_N];
     public static final int MIN = Integer.MIN_VALUE;
+    public static int ans = MIN;
 
     public static void initialize() {
         for (int i = 0; i < MAX_N; i++) {
@@ -20,6 +21,10 @@ public class Main {
         for (int i = 1; i < n; i++) {
             dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
         }
+
+        for (int i = 0; i < n; i++) {
+            ans = Math.max(ans, dp[i]);
+        }
     }
 
     public static void main(String[] args) {
@@ -31,6 +36,6 @@ public class Main {
         
         solve();
 
-        System.out.println(dp[n - 1]);
+        System.out.println(ans);
     }
 }
