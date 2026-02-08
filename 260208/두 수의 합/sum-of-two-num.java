@@ -6,28 +6,25 @@ public class Main {
         int n = sc.nextInt();
         int k = sc.nextInt();
         int[] arr = new int[n];
+        Map<Integer, Integer> hm = new HashMap<>();
+
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
+            hm.put(arr[i], hm.getOrDefault(arr[i], 0) + 1);
         }
 
-        Arrays.sort(arr);
-
-        int start = 0;
-        int end = n - 1;
         int cnt = 0;
 
-        while (start < end) {
-            int tmp = arr[start] + arr[end];
+        for (int i = 0; i < n / 2; i++) {
+            int x = arr[i];
 
-            if (tmp < k) {
-                start++;
-                continue;
+            if (hm.containsKey(k - x)) {
+                cnt += hm.get(k - x);
             }
 
-            if (tmp == k) {
-                cnt++;
+            if (k - x == x) {
+                cnt--;
             }
-            end--;
         }
 
         System.out.print(cnt);
