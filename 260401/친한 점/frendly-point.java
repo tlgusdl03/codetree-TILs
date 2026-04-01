@@ -11,10 +11,10 @@ class Pair implements Comparable<Pair> {
     @Override
     public int compareTo(Pair p) {
         if(this.x == p.x) {
-            return this.y - p.y;
+            return Integer.compare(this.y, p.y);
         }
         else {
-            return this.x - p.x;
+            return Integer.compare(this.x, p.x);
         }
     }
 }
