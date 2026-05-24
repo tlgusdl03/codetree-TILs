@@ -15,7 +15,7 @@ int trans(char a) {
 
 void calculator() {
     int result = trans(str[0]);
-    for (int i = 1; i < N; i++) {
+    for (int i = 1; i < N; i += 2) {
         if (str[i] == '+') {
             result += trans(str[i + 1]);
         }
