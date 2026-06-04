@@ -5,7 +5,7 @@ using namespace std;
 int n;
 int first_cards[1000];
 int second_cards[1000];
-int dp[1001][1001];
+int dp[1000][1000];
 
 int main() {
     cin >> n;
